@@ -1,12 +1,21 @@
 /* Script that listen for changes on each INPUT checkbox tag */
 $('document').ready(function () {
-  const amenitiesId = {};
-  $('INPUT[type="checkbox"]').click(function () {
-    if ($(this).prop('checked')) {
-      amenitiesId[$(this).attr('data-id')] = $(this).attr('data-name');
+  const url = 'http://' + window.location.hostname + ':5001/api/v1/status/';
+  $.get(url, function (res) {
+    if (res.status === 'OK') {
+      $('#api_status').addClass('available');
     } else {
-      delete amenitiesId[$(this).attr('data-id')];
+      $('#api_status').removeClass('available');
     }
-    $('.amenities h4').text(Object.values(amenitiesId).join(', '));
+  });
+
+  const amenities = {};
+  $('INPUT[type="checkbox"]').change(function () {
+    if ($(this).is(':checked')) {
+      amenities[$(this).attr('data-id')] = $(this).attr('data-name');
+    } else {
+      delete amenities[$(this).attr('data-id')];
+    }
+    $('.amenities H4').text(Object.values(amenities).join(', '));
   });
 });

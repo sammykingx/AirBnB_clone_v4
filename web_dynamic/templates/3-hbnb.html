@@ -8,13 +8,14 @@
     <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css" {{ cache_id }}>
     <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css" {{ cache_id }}>
     <link rel="icon" href="../static/images/icon.png" />
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../scripts/static/1-hbnb.js" {{ cache_id }}>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script type="text/javascript" src="../scripts/static/2-hbnb.js" {{ cache_id }}>
     <title>HBnB</title>
   </head>
   <body>
     <header>
       <div class="logo"></div>
+      <div id="api_status"></div>
     </header>
     <div class="container">
       <section class="filters">
@@ -55,7 +56,7 @@
       <section class="places">
 	<!-- <h1>Places</h1> -->
 	{% for place in places %}
-	<article>
+<!--	<article>
 	  <div class="title_box">
 	    <h2>{{ place.name }}</h2>
 	    <div class="price_by_night">${{ place.price_by_night }}</div>
@@ -71,7 +72,7 @@
           <div class="description">
 	    {{ place.description | safe }}
           </div>
-	</article>
+	</article> -->
 	{% endfor %}
       </section>
     </div>
